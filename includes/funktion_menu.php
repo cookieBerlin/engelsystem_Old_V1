@@ -6,7 +6,7 @@ function ShowMenu( $MenuName)
 	$Gefunden=FALSE;
 
 	//Überschift
-	$Text = "<h4 class=\"menu\">". Get_Text("$MenuName/"). "</h4>";
+	$Text = "<h4 class=\"menu\">". Get_Text("$MenuName/"). "</h4>\n";
 	
 	//einträge
 	foreach( $_SESSION['CVS'] as $Key => $Entry )

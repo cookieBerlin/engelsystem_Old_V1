@@ -17,6 +17,7 @@ echo "<TITLE>--- $title ---</TITLE>\n";
 <meta name="revisit-after" content="1 days">
 <meta http-equiv="content-language" content="de">
 <script type="text/javascript" src="<?PHP echo $url. $ENGEL_ROOT; ?>/css/grossbild.js"></script>
+<link rel=stylesheet type="text/css" href="<?PHP echo $url. $ENGEL_ROOT; ?>css/layout.css">
 <link rel=stylesheet type="text/css" href="<?PHP echo $url. $ENGEL_ROOT; ?>css/style<?PHP
 	if (!IsSet($_SESSION['color'])) 
 		echo "6"; 
@@ -47,61 +48,55 @@ echo "</HEAD>\n";
 /////////////////////////////////////////////////////////////////////////////////////////////
 echo "<BODY>\n";
 
-echo "<div name=\"topic\" align=\"center\">\n\n";
+echo "<div id=\"topic\">\n\n";
 
 if( isset($_SESSION['color']) && ($_SESSION['color']==6) )
 {
-	echo 	"\t<a name=\"#top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel_w.png\" alt=\"Unser Himmel\"></a>\n";
+	echo "\t<a name=\"#top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel_w.png\" alt=\"Unser Himmel\"></a>\n";
 }
 else
 {
-	echo 	"\t<a name=\"#top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel.png\" alt=\"Unser Himmel\"></a>\n";
+	echo "\t<a name=\"#top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel.png\" alt=\"Unser Himmel\"></a>\n";
 }
 echo "</div>\n\n";
 
 
 //ausgabe new message
-if( isset($_SESSION['CVS']["nonpublic/messages.php"]))
+echo "<div id=\"message\">";
+if( isset($_SESSION['CVS']["nonpublic/messages.php"]) && ( $_SESSION['CVS']["nonpublic/messages.php"] == "Y") )
 {
-    if( $_SESSION['CVS']["nonpublic/messages.php"] == "Y")
-    {
 	$SQL = "SELECT `Datum` FROM `Messages` WHERE `RUID`=". $_SESSION["UID"]. " AND `isRead`='N'";
 	$erg = mysql_query($SQL, $con);
 	if( mysql_num_rows( $erg ) > 0 )
-		echo "<br><a href=\"". $url. $ENGEL_ROOT.
-			"nonpublic/messages.php\">". Get_Text("pub_messages_new1").
-			" ".  mysql_num_rows( $erg ). " ".
-			Get_Text("pub_messages_new2"). "</a><br><br>";
-    }
+	{
+		echo 	"<a href=\"". $url. $ENGEL_ROOT. "nonpublic/messages.php\">". Get_Text("pub_messages_new1").
+			" ".  mysql_num_rows( $erg ). " ". Get_Text("pub_messages_new2"). "</a>".
+			"<br><br>";
+	}
 }
-?>
-<table width="95%" align="center" border="0" cellpadding="7" cellspacing="0">
-	<tr>
-<?PHP
+		echo 	"<a href=\"". $url. $ENGEL_ROOT. "nonpublic/messages.php\">". Get_Text("pub_messages_new1").
+			" #### ". Get_Text("pub_messages_new2"). "</a>".
+			"<br><br>";
+echo "</div>";
+
 //ausgaeb Menu
-if( !isset($_SESSION['Menu']))		$_SESSION['Menu'] = "L";
-if( $_SESSION['Menu'] =="L")		include("menu.php");
-?>
+include("menu.php");
 
-		<td valign="top" align="center">
-<table border="0" width="100%" align="center" class="border" cellpadding="5" cellspacing="1">
-	<tr class="contenttopic">
-		<td>
-<?PHP
-		echo "\t<a name=\"#$header\" class=\"contenttopic\">";
-		if( strlen( $header) == 0 )
-			echo "\n\t<b>". Get_Text($Page["Name"]). "</b></a>\n";
-		else
-			echo "\n\t<b>$header</b></a>\n";
+echo "<div id=\"main\">\n";
+echo	"<table border=\"0\" width=\"100%\" align=\"center\" class=\"border\" cellpadding=\"5\" cellspacing=\"1\">\n".
+	"\t<tr class=\"contenttopic\">\n".
+	"\t\t<td>\n".
+	"\t<a name=\"#$header\" class=\"contenttopic\">";
+if( strlen( $header) == 0 )
+	echo "\n\t<b>". Get_Text($Page["Name"]). "</b></a>\n";
+else
+	echo "\n\t<b>$header</b></a>\n";
 
-?>
-		</td>
-	</tr>
-	<tr class="content">
-	 	<td>
-<br>
-<?php 
-echo "\n\n\n";
+echo	"\t\t</td>\n".
+	"\t</tr>\n".
+	"<tr class=\"content\">\n".
+	"\t<td>\n".
+	"<br>\n\n\n";
  
 if (IsSet($_SESSION['UID'])) {
 	if( isset($_SESSION['oldurl']))

@@ -1,0 +1,70 @@
+/* Properties that both side lists have in common */
+div.link-list {
+        width:10.2em;
+        position:absolute;
+        top:0;
+        font-size:80%;
+        padding-left:1%;
+        padding-right:1%;
+        margin-left:0;
+        margin-right:0;
+}
+
+/*  */
+#topic {
+	top:0;
+	text-align: center;
+}
+
+/*  */
+#message {
+        left:100;
+	top:50;
+	text-align: center;
+        margin-top:5;
+}
+
+/* menu settings */
+#menu {
+        position:absolute;
+        left:0;
+	top:50;
+}
+
+/* sub menu settings */
+#submenu {
+	width:105px;
+	text-align: left;
+	border: 1px solid #000000;
+        padding-top:4px;
+        padding-left:4px;
+        padding-right:4px;
+        padding-bottom:4px;
+        margin-top:5px;
+        margin-left:5px;
+        margin-right:5px;
+        margin-bottom:5px;
+}
+
+/*  */
+#main {
+        position:absolute;
+        left:125;
+}
+
+/*  */
+#footer {
+	text-align: center;
+/*
+        position: fixed;
+        position:absolute;
+	
+	width: 100%;
+        height: 100px;
+        top: auto;
+        right: 0;
+        left: 0;
+        bottom: 0;
+*/
+}
+

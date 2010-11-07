@@ -45,6 +45,10 @@ if( isset($_SESSION['UID']))
 			"`lastLogIn` = '". gmdate("Y-m-j H:i:s", time()). "'".
 			" WHERE `UID` = '". $_SESSION['UID']. "' LIMIT 1;";
 	mysql_query ($SQLlastLogIn, $con);
-}								  
+}
+
+// The page cannot be displayed in a frame, regardless of the site attempting to do so.
+// see: https://developer.mozilla.org/en/The_X-FRAME-OPTIONS_response_header
+header("x-frame-options: DENY");
 
 ?>
