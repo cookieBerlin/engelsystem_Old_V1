@@ -145,7 +145,7 @@ function ausgabe_Feld_Inhalt( $SID, $Man )
 			if( $_SESSION['CVS'][ $TID2Name[$TempValue["TID"]] ] == "Y")
 				if( $TempValue["free"] > 0 )
 				{
-					$Spalten.= "<br>\n\t\t&nbsp;&nbsp;<a href=\"./schichtplan_add.php?SID=$SID&TID=".
+					$Spalten.= "<br>\n\t\t&nbsp;&nbsp;<a href=\"./schichtplan_add.php?SID=$SID&amp;TID=".
 						   $TempValue["TID"]."\">";
 					$Spalten.= $TempValue["free"];
 					if( $TempValue["free"] != 1 )
@@ -210,7 +210,7 @@ function CreateRoomShifts( $raum )
 			echo "<h1>". Get_Text("pub_schichtplan_colision"). "</h1> ";
 			for( $i=0; $i<mysql_num_rows( $ErgSonder); $i++)
 			{
-				echo "<a href=\"./../admin/schichtplan.php?action=change&SID=". 
+				echo "<a href=\"./../admin/schichtplan.php?action=change&amp;SID=". 
 					mysql_result($ErgSonder, $i, "SID"). "\">".
 					mysql_result($ErgSonder, $i, "DateS"). 
 					" '". mysql_result($ErgSonder, $i, "Man")."' (RID $raum) (00-24)".
@@ -245,7 +245,7 @@ function CreateRoomShifts( $raum )
 			echo "<h1>". Get_Text("pub_schichtplan_colision"). "</h1> ";
 			for( $i=0; $i<mysql_num_rows( $ErgSonder); $i++)
 			{
-				echo "<a href=\"./../admin/schichtplan.php?action=change&SID=". 
+				echo "<a href=\"./../admin/schichtplan.php?action=change&amp;SID=". 
 					mysql_result($ErgSonder, $i, "SID"). "\">".
 					mysql_result($ErgSonder, $i, "DateS"). 
 					" '". mysql_result($ErgSonder, $i, "Man")."' (RID $raum) (00-xx)".
@@ -306,7 +306,7 @@ function CreateRoomShifts( $raum )
 		else
 		{
 			echo "<h1>". Get_Text("pub_schichtplan_colision"). "</h1> ";
-			echo "<a href=\"./../admin/schichtplan.php?action=change&SID=". 
+			echo "<a href=\"./../admin/schichtplan.php?action=change&amp;SID=". 
 				mysql_result($Erg, $i, "SID"). "\">".
 				mysql_result($Erg, $i, "DateS"). 
 				" '". mysql_result($Erg, $i, "Man"). "' ".

@@ -19,6 +19,8 @@ switch( $_GET["action"])
 		$SQL = "SELECT * FROM `Messages` WHERE `SUID`='". $_SESSION["UID"]. "' OR `RUID`='". $_SESSION["UID"]. "'";
 		$erg = mysql_query($SQL, $con);
 	
+		echo "<form action=\"". $_SERVER['SCRIPT_NAME']. "?action=SendMsg\" method=\"POST\" >";
+
 		echo "<table border=\"0\" class=\"border\" cellpadding=\"2\" cellspacing=\"1\">\n";
 		echo "<tr>\n";
 		echo "\t<td class=\"contenttopic\"><b>". Get_Text("pub_messages_Datum"). "</b></td>\n";
@@ -58,7 +60,6 @@ switch( $_GET["action"])
 		//#####################
 		//send Messeges
 		//#####################
-		echo "<form action=\"". $_SERVER['SCRIPT_NAME']. "?action=SendMsg\" method=\"POST\" >";
 		echo "<tr class=\"content\">\n";
 		echo "\t<td></td>\n";
 		echo "\t<td></td>\n";
@@ -76,9 +77,10 @@ switch( $_GET["action"])
 		echo "\t<td><textarea name=\"Text\"  cols=\"30\" rows=\"10\"></textarea></td>\n";
 		echo "\t<td><input type=\"submit\" value=\"". Get_Text("save"). "\"></td>\n";
 		echo "</tr>\n";
-		echo "</form>";
 		
 		echo "</table>\n";
+		
+		echo "</form>";
 		break;
 		
 	case "SendMsg":

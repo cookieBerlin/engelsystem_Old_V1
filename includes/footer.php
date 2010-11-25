@@ -19,18 +19,16 @@
 		</td>
 	</tr>
 </table>
-</div>
 
 
-
-<div id=footer>
-	<td colspan="2">
+	<div id=footer>
 		<h5 align="center"> &#169; copyleft - <a href="mailto:erzengel@lists.ccc.de">Kontakt</a>
 		<?PHP 
 			include( "funktion_counter.php"); 
 			include( "funktion_flag.php"); 
 		?></h5>
-       	</td>
+	</div>
+
 </div>
 
 <?php mysql_close($con); ?>

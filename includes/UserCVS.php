@@ -81,7 +81,11 @@ function funktion_isLinkAllowed_addLink_OrLinkText( $PageName, $LinkText)
 
 	if( funktion_isLinkAllowed( $PageName) === TRUE)
 	{
-		return "<a href=\"". $url. $ENGEL_ROOT. $PageName. "\">". $LinkText. "</a>";
+		// convert '&', '"', ''', '<', '>'
+		$PageName = htmlspecialchars($PageName);
+		// convert ' '
+		$PageName = str_replace ( ' ', '%20', $PageName);
+		return "<a href=\"". $url. $ENGEL_ROOT. htmlspecialchars($PageName). "\">". $LinkText. "</a>";
 	}
 	
 	return $LinkText;
@@ -93,6 +97,10 @@ function funktion_isLinkAllowed_addLink_OrEmpty( $PageName, $LinkText)
 
 	if( funktion_isLinkAllowed( $PageName) === TRUE)
 	{
+		// convert '&', '"', ''', '<', '>'
+		$PageName = htmlspecialchars($PageName);
+		// convert ' '
+		$PageName = str_replace ( ' ', '%20', $PageName);
 		return "<a href=\"". $url. $ENGEL_ROOT. $PageName. "\">". $LinkText. "</a>";
 	}
 

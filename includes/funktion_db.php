@@ -59,7 +59,7 @@ if( !function_exists("db_query"))
 					if( $value != $Data2[$key])
 					{
 						$Gefunden=TRUE;
-						$Diff .= "<tr>\n\t<td>$key</td>\n\t<td>$value</td>\n\t<td>".$Data2[$key]."</rd>\n</tr>";
+						$Diff .= "<tr>\n\t<td>$key</td>\n\t<td>$value</td>\n\t<td>".$Data2[$key]."</td>\n</tr>";
 					}
 			}
 			else

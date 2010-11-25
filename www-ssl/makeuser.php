@@ -1,6 +1,6 @@
 <?PHP
 $title = "Anmeldung zum Chaos-Engel";
-$header = "";
+$header = "Registration";
 $success = "none"; 
 include ("../includes/config.php");
 include ("../includes/header.php");

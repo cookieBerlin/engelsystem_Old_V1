@@ -1,7 +1,7 @@
 <?PHP 
 include ("header_start.php");
 
-echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">\n";
+echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n";
 ?>
 <HTML>
 <HEAD>
@@ -52,45 +52,46 @@ echo "<div id=\"topic\">\n\n";
 
 if( isset($_SESSION['color']) && ($_SESSION['color']==6) )
 {
-	echo "\t<a name=\"#top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel_w.png\" alt=\"Unser Himmel\"></a>\n";
+	echo "\t<a id=\"top\" name=\"top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel_w.png\" alt=\"Unser Himmel\"></a>\n";
 }
 else
 {
-	echo "\t<a name=\"#top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel.png\" alt=\"Unser Himmel\"></a>\n";
+	echo "\t<a id=\"top\" name=\"top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel.png\" alt=\"Unser Himmel\"></a>\n";
 }
 echo "</div>\n\n";
 
+//ausgaeb Menu
+include("menu.php");
+
+
+// ---------------------------------
+// - DIV MAIN START
+// ---------------------------------
+echo "<div id=\"main\">\n";
 
 //ausgabe new message
-echo "<div id=\"message\">";
 if( isset($_SESSION['CVS']["nonpublic/messages.php"]) && ( $_SESSION['CVS']["nonpublic/messages.php"] == "Y") )
 {
 	$SQL = "SELECT `Datum` FROM `Messages` WHERE `RUID`=". $_SESSION["UID"]. " AND `isRead`='N'";
 	$erg = mysql_query($SQL, $con);
 	if( mysql_num_rows( $erg ) > 0 )
 	{
-		echo 	"<a href=\"". $url. $ENGEL_ROOT. "nonpublic/messages.php\">". Get_Text("pub_messages_new1").
-			" ".  mysql_num_rows( $erg ). " ". Get_Text("pub_messages_new2"). "</a>".
-			"<br><br>";
+		echo "<div id=\"message\">\n";
+		echo 	"\t<a href=\"". $url. $ENGEL_ROOT. "nonpublic/messages.php\">". Get_Text("pub_messages_new1").
+			" ".  mysql_num_rows( $erg ). " ". Get_Text("pub_messages_new2"). "</a>\n";
+		echo "</div>\n";
 	}
 }
-		echo 	"<a href=\"". $url. $ENGEL_ROOT. "nonpublic/messages.php\">". Get_Text("pub_messages_new1").
-			" #### ". Get_Text("pub_messages_new2"). "</a>".
-			"<br><br>";
-echo "</div>";
 
-//ausgaeb Menu
-include("menu.php");
 
-echo "<div id=\"main\">\n";
+// main Table
 echo	"<table border=\"0\" width=\"100%\" align=\"center\" class=\"border\" cellpadding=\"5\" cellspacing=\"1\">\n".
 	"\t<tr class=\"contenttopic\">\n".
-	"\t\t<td>\n".
-	"\t<a name=\"#$header\" class=\"contenttopic\">";
+	"\t\t<td>\n";
 if( strlen( $header) == 0 )
-	echo "\n\t<b>". Get_Text($Page["Name"]). "</b></a>\n";
+	echo "\t<b>". Get_Text($Page["Name"]). "</b>\n";
 else
-	echo "\n\t<b>$header</b></a>\n";
+	echo "\t<b>$header</b>\n";
 
 echo	"\t\t</td>\n".
 	"\t</tr>\n".
@@ -123,6 +124,7 @@ if ( $Page["CVS"] != "Y" )
 		echo "<a href=\"". $url. $ENGEL_ROOT. "\">".Get_Text("back")."</a> geht's zur&uuml;ck...\n";
         exit ();
 }
+
 ?>
 
 

@@ -34,9 +34,10 @@ for ($n = 0 ; $n < $news_rows ; $n++)
   
   echo "<u>". ReplaceSmilies(mysql_result($Erg, $n, "Betreff")) ."</u>\n";
 
-  // Schow Admin Page
-  if( $_SESSION['CVS'][ "admin/news.php" ] == "Y" )
-	echo " <a href=\"./../admin/news.php?action=change&date=". mysql_result($Erg, $n, "Datum"). "\">[edit]</a><br>\n\t\t";
+  // Show Admin Page
+  echo funktion_isLinkAllowed_addLink_OrEmpty(
+	"admin/news.php?action=change&date=". mysql_result($Erg, $n, "Datum"), 
+	"[edit]");
 
   echo "<br>&nbsp; &nbsp;<font size=1>".mysql_result($Erg, $n, "Datum").", ";
   echo UID2Nick(mysql_result($Erg, $n, "UID"))."</font>";

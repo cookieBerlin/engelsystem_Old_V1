@@ -1,5 +1,6 @@
 <?PHP
 
+
 function ShowMenu( $MenuName)
 {
 	global $MenueTableStart, $MenueTableEnd, $_SESSION, $DEBUG, $url, $ENGEL_ROOT;
@@ -7,6 +8,7 @@ function ShowMenu( $MenuName)
 
 	//Überschift
 	$Text = "<h4 class=\"menu\">". Get_Text("$MenuName/"). "</h4>\n";
+	$Text .= "\t<ul>\n";
 	
 	//einträge
 	foreach( $_SESSION['CVS'] as $Key => $Entry )
@@ -37,8 +39,14 @@ function ShowMenu( $MenuName)
 					$Text .= "\t\t\t<li>$TempName ($Key)</li>\n";
 				}
 			}
+	$Text .= "\t</ul>\n";
+
 	if( $Gefunden)
+	{
+		echo "<div id=\"submenu_". $MenuName. "\" class=\"menu\">\n";
 		echo $MenueTableStart.$Text.$MenueTableEnd;
+		echo "</div>\n";
+	}
 }//function ShowMenue
 
 ?>

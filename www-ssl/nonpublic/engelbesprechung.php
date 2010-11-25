@@ -16,20 +16,20 @@ $Zeilen  = mysql_num_rows($Erg);
 
 for ($n = 0 ; $n < $Zeilen ; $n++) 
 {
-  if (mysql_result($Erg, $n, "Treffen")=="1") 
-  {
-    echo "<p class='question'><u>".mysql_result($Erg, $n, "Betreff")."</u>";
+	if (mysql_result($Erg, $n, "Treffen")=="1") 
+	{
+		echo "<p class='question'><u>".mysql_result($Erg, $n, "Betreff")."</u>";
    
-    // Schow Admin Page
-    if( $_SESSION['CVS'][ "admin/news.php" ] == "Y" )
-	echo " <a href=\"./../admin/news.php?action=change&date=". mysql_result($Erg, $n, "Datum"). "\">[edit]</a>";
+		// Show Admin Page
+		echo funktion_isLinkAllowed_addLink_OrEmpty(
+			"admin/news.php?action=change&date=". mysql_result($Erg, $n, "Datum"), 
+			"[edit]");
 
-    echo "<br>&nbsp; &nbsp;<font size=1>".mysql_result($Erg, $n, "Datum").", ";
-    echo UID2Nick(mysql_result($Erg, $n, "UID"))."</font></p>\n";
+		echo "<br>&nbsp; &nbsp;<font size=1>".mysql_result($Erg, $n, "Datum").", ";
+		echo UID2Nick(mysql_result($Erg, $n, "UID"))."</font></p>\n";
 
-		
-   echo "<p class='answetion'>".nl2br(mysql_result($Erg, $n, "Text"))."</p>\n";
-  }
+		echo "<p class='answetion'>".nl2br(mysql_result($Erg, $n, "Text"))."</p>\n";
+	}
 }
 	    
 

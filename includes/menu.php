@@ -3,21 +3,6 @@
 
 <div id="menu">
 <?PHP
-$MenueTableStart = "<div id=\"submenu\" class=\"menu\">\n";
-/* old:
-	"\n<table align=\"center\" class=\"border\" cellpadding=\"3\" cellspacing=\"1\">\n".
-	"\t<tr>\n".
-	"\t\t<td width=\"160\" class=\"menu\">\n";
-*/ 
-$MenueTableEnd = "</div>\n";
-/* old:
-	"\n".
-	"\t\t\t\t<br>\n".
-	"\t\t</td>\n".
-	"\t</tr>\n".
-	"</table><br>\n";
-*/
-
 ShowMenu("");
 ShowMenu("nonpublic");
 ShowMenu("admin");
@@ -37,25 +22,17 @@ if ($submenus >= 1 )
   
 	for ($index_nummer=1; $index_nummer <= $submenus; $index_nummer++) 
 	{
-		echo "<div id=\"submenu\" class=\"menu\">\n";
+		echo "<div id=\"submenu_". $index_nummer. "\" class=\"menu\">\n";
 		include ("./".$filepost.".".$index_nummer.$filepre);
 		echo "</div>\n";
 	}
 }
 
-echo "<div id=\"submenu\" class=\"menu\">\n";
+echo "<div id=\"submenu_ActiveUser\" class=\"menu\">\n";
 include("funktion_activeUser.php");
 echo "</div>\n";
 
 ?>
-<table align="center" class="border" cellpadding="3" cellspacing="1">
-	<tr>
-		<td width="160" class="menu">
-		<?php include("funktion_activeUser.php"); ?>
-		</td>
-	</tr>
-</table>
-
 
 </div>
 <!-- ende des menue parts //-->

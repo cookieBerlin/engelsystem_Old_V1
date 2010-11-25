@@ -18,7 +18,7 @@ if( !function_exists("bcmod"))
 }
 
 
-echo "<h4 class=\"menu\">Engel online</h4>";
+echo "<h4 class=\"menu\">Engel online</h4>\n";
 
 $SQL = "SELECT UID, Nick, lastLogIn ".
 	"FROM User ".
@@ -33,27 +33,33 @@ $Tist =	(gmdate("d", time()) * 60 * 60 * 24) +	// Tag
 	(gmdate("i", time()) * 60) +		// Minute
 	(gmdate("s", time()) ); 		// Sekunde
 
-for( $i=0; $i<mysql_num_rows($Erg); $i++)
+$Anzahl = mysql_num_rows($Erg);
+if ($Anzahl > 0)
 {
-	echo "\t\t\t<li>";
-	if( $_SESSION['UID']>0 )
-		echo DisplayAvatar( mysql_result( $Erg, $i, "UID"));
-	// Schow Admin Page
-	echo funktion_isLinkAllowed_addLink_OrLinkText(
-		"admin/userChangeNormal.php?enterUID=". mysql_result( $Erg, $i, "UID"). "&Type=Normal",
-		mysql_result( $Erg, $i, "Nick"));
-
-	$Tlog =	(substr( mysql_result( $Erg, $i, "lastLogIn"),  8, 2) * 60 * 60 * 24) +	// Tag
-		(substr( mysql_result( $Erg, $i, "lastLogIn"), 11, 2) * 60 * 60) +	// Stunde
-		(substr( mysql_result( $Erg, $i, "lastLogIn"), 14, 2) * 60) +		// Minute
-		(substr( mysql_result( $Erg, $i, "lastLogIn"), 17, 2) );		// Sekunde
+	echo "\t<ul>\n";
+	for( $i=0; $i<$Anzahl; $i++)
+	{
+		echo "\t\t\t<li>";
+		if( $_SESSION['UID']>0 )
+			echo DisplayAvatar( mysql_result( $Erg, $i, "UID"));
+		// Schow Admin Page
+		echo funktion_isLinkAllowed_addLink_OrLinkText(
+			"admin/userChangeNormal.php?enterUID=". mysql_result( $Erg, $i, "UID"). "&Type=Normal",
+			mysql_result( $Erg, $i, "Nick"));
 	
- 	$Tlog = $Tist-$Tlog;
-	echo " ". bcdiv( $Tlog, 60). ":";
-	if( strlen(bcmod( $Tlog, 60))==1)
-		echo "0";
-	echo bcmod( $Tlog, 60);
-	echo "</li>\n";
+		$Tlog =	(substr( mysql_result( $Erg, $i, "lastLogIn"),  8, 2) * 60 * 60 * 24) +	// Tag
+			(substr( mysql_result( $Erg, $i, "lastLogIn"), 11, 2) * 60 * 60) +	// Stunde
+			(substr( mysql_result( $Erg, $i, "lastLogIn"), 14, 2) * 60) +		// Minute
+			(substr( mysql_result( $Erg, $i, "lastLogIn"), 17, 2) );		// Sekunde
+	
+	 	$Tlog = $Tist-$Tlog;
+		echo " ". bcdiv( $Tlog, 60). ":";
+		if( strlen(bcmod( $Tlog, 60))==1)
+			echo "0";
+		echo bcmod( $Tlog, 60);
+		echo "</li>\n";
+	}
+	echo "\t</ul>\n";
 }
 
 ?>

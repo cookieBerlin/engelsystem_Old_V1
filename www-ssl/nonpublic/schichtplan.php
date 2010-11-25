@@ -81,20 +81,22 @@ if ( !isset($raum) )
 	if( isset($Room))
 	{
 		echo "<form action=\"./schichtplan.php\" method=\"GET\">\n";
+		echo "\t<ul>\n";
 		foreach( $Room as $RoomEntry  )
 		{
-			echo "\t<li><input type=\"checkbox\" name=\"raum_". $RoomEntry["RID"]. "\" value=\"". $RoomEntry["RID"]." \">";
-			echo "<a href='./schichtplan.php?ausdatum=$ausdatum&raum=". $RoomEntry["RID"]. "'>". $RoomEntry["Name"]. "</a>";
-			echo "</input></li>\n";
+			echo "\t\t<li><input type=\"checkbox\" name=\"raum_". $RoomEntry["RID"]. "\" value=\"". $RoomEntry["RID"]." \">";
+			echo "<a href='./schichtplan.php?ausdatum=$ausdatum&amp;raum=". $RoomEntry["RID"]. "'>". $RoomEntry["Name"]. "</a>";
+			echo "</li>\n";
 		}
-		echo "<input type=\"hidden\" name=\"ausdatum\" value=\"$ausdatum\">";
-		echo "<input type=\"hidden\" name=\"raum\" value=\"-1\">";
-		echo "<input type=\"submit\" name=\"show\" value=\"show\">\n";
+		echo "\t</ul>\n";
+		echo "\t<input type=\"hidden\" name=\"ausdatum\" value=\"$ausdatum\">\n";
+		echo "\t<input type=\"hidden\" name=\"raum\" value=\"-1\">\n";
+		echo "\t<input type=\"submit\" name=\"show\" value=\"show\">\n";
 		echo "</form>\n";
 	}
 
 	echo "<br><br>";
-	echo Get_Text("pub_schicht_alles_1"). "<a href='./schichtplan.php?ausdatum=$ausdatum&raum=-1'> <u>".
+	echo Get_Text("pub_schicht_alles_1"). "<a href='./schichtplan.php?ausdatum=$ausdatum&amp;raum=-1'> <u>".
 	     Get_Text("pub_schicht_alles_2"). "</u> </a>".Get_Text("pub_schicht_alles_3");
 	echo "\n<br><br>\n\n";
 	echo "<hr>\n\n";
