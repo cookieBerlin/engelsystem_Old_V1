@@ -14,6 +14,12 @@
 	width:160px;
 }
 
+/* move liste left */
+#menu ul{
+	padding-left: 16px;
+}
+
+
 /* sub menu settings */
 #submenu {
 	text-align: left;
@@ -37,7 +43,6 @@
 	right:4px;
 	bottom:4px;
 }
-
 
 /* Properties that both side lists have in common */
 div.link-list {
