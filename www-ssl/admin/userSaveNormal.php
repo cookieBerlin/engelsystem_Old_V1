@@ -32,8 +32,7 @@ if (IsSet($_GET["action"]))
 					"`Gekommen`= '". $_POST["eGekommen"]. "', ".
 					"`Aktiv`= '". $_POST["eAktiv"]. "', ".
 					"`Tshirt` = '". $_POST["eTshirt"]. "', ".
-					"`Hometown` = '". $_POST["Hometown"]. "', ".
-					"`Menu` = '". $_POST["eMenu"]. "' ".
+					"`Hometown` = '". $_POST["Hometown"]. "' ".
 					"WHERE `UID` = '". $_POST["enterUID"]. 
 					"' LIMIT 1;";
 				echo "User-";
