@@ -181,3 +181,19 @@ Das System sollte nun funktionieren. Einloggen kann man sich mit 'admin:admin'
 (aendern nicht vergessen ;-)). Es sollte sich dir dann die Adminoberflaeche des
 Systems zeigen.
 
+
+4. Setup Asterisk
+	apt-get install festival asterisk php5-cli
+	chmod o+x /var/spool/asterisk
+	chmod o+rwx /var/spool/asterisk/outgoing
+	mv /etc/asterisk/extensions.conf /etc/asterisk/extensions.conf_org
+	cp <GIT>/default-conf/asterisk/extensions.conf /etc/asterisk/extensions.conf
+	
+	cp /usr/share/doc/festival/examples/festival.init /etc/init.d/festival 
+	chmod +x /etc/init.d/festival
+	echo RUN_FESTIVAL=yes > /etc/default/festival 
+	cp <GIT>/default-conf/etc/festival.scm /etc
+	/etc/init.d/festival start
+	cp <GIT>/default-conf/etc/crontab /etc/cron.d/cron-27c3
+	
+	!!! create .tmp in service dir !!!
