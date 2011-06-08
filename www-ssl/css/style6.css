@@ -1,68 +1,47 @@
-
 body {
-	font-family: Arial, Helvetica, sans-serif;
 	background-color: #121327;
 	color: #FFFFFF;
-	font-size: small
 }
 
-a {
-	text-decoration: none;
-	color: #ff9900
-}
-
-td {
-	font-size: small
-}
-
-a:active, a:hover {
-	font-weight: bold
-}
-	
-li {
-	font-size: small
-}
-
-.content {
-	background-color: #636e77;
-	color: #FFFFFF
-}
-
-.contenttopic {
-	font-weight: bold;
-	font-size: small;
+a:link,
+a:visited {
 	color: #FF9900;
-	background-color: #333e47
+} 
+
+#header #logo {
+	background: url(himmel_w.png) center 8px no-repeat;
+	text-indent: -10000px;
 }
 
-.border {
-	background-color: #000000
+
+#navi .menu{
+	background-color: #1F203F;
+	color: #FFF3BF;
 }
 
-.menu {
-	background-color: #1f203f;
-	color: #fff3bf;
-	font-size: small
-}
-h4.menu { 
-	font-weight: bold;
-	font-size: small;
-	color: #fff3bf
-}
-.question {
-	font-weight: bold;
-	font-size: 9pt
+#navi .menutopic {
+	background-color: #5f607f;
 }
 
-.engeltreffen {
-        font-weight: bold;
-        font-size: 9pt;
-        color: #FF0000;
+#navi li a:focus,
+#navi li a:hover,
+#navi li a:active {
+	background: #636e77;  
 }
 
-.answer {
-	font-size:  9pt;
+#content,
+#content table .content {
+	background: #636e77;  
 }
-.comment {
-	font-size : 6pt;
+
+#contenttopic,
+#content table .contenttopic,
+#shortnavi {
+	color: #FF9900;
+	background-color: #333e47;
 }
+
+#content table.border {
+	background-color: #000000;
+}
+

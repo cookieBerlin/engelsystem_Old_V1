@@ -23,7 +23,7 @@ echo "\t<TITLE>--- $title ---</TITLE>\n";
 <?PHP
 if (!IsSet($_SESSION['color'])) 
 	$_SESSION['color'] =  "6"; 
-#echo "<link rel=stylesheet type=\"text/css\" href=\"". $url. $ENGEL_ROOT. "css/style". $_SESSION['color']. ".css\">";
+echo "<link rel=stylesheet type=\"text/css\" href=\"". $url. $ENGEL_ROOT. "css/style". $_SESSION['color']. ".css\">";
 
 if (isset($reload)) 
 {
