@@ -109,7 +109,7 @@
       if ($jabber->Connect() && $jabber->SendAuth()) {
         foreach($jabber_recipient as $value)
         {
-          $jabber->SendMessage($value, "normal", NULL, array("body" => $message, "subject" => "Error in Pentabarf"), NULL);
+          $jabber->SendMessage($value, "normal", NULL, array("body" => $message, "subject" => "Error in engelsystem"), NULL);
         }
         $jabber->Disconnect();
       } else {
@@ -119,7 +119,7 @@
 
     if (isset($mail_recipient) && count($mail_recipient)) {
       foreach($mail_recipient as $to) {
-        mail($to, isset($mail_subject) ? $mail_subject : "Pentabarf Error", $message);
+        mail($to, isset($mail_subject) ? $mail_subject : "Engelsystem Error", $message);
       }
     }
   }
