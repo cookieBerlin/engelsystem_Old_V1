@@ -1,84 +1,51 @@
-
 body {
 	background-color: #131313;
-
 	color: #424242;
-
-	line-height: 150%;
-	font-family: Trebuchet MS, Lucida Grande, Arial, sans-serif;
-
-	margin-bottom: 20px;
 }
 
-a {
-	text-decoration: none;
-	color: #424242
+a:link,
+a:visited {
+	color: #424242;
+} 
+
+#header #logo {
+	background: url(himmel.png) center 8px no-repeat;
+	text-indent: -10000px;
 }
 
-td {
-	font-size: small
-}
-
-a:active, a:hover {
-	font-weight: bold
-}
-	
-li {
-	font-size: small
-}
-
-.content {
-	background-color: #131313;
-	color: 		#424242;
-}
-
-.contenttopic {
-	font-weight: bold;
-	font-size: small;
-	color: #000000;
-	background-color: #333333
-}
-
-.border {
-	background-color: #333333
-}
-
-.menu {
+#navi .menu {
 	background-color: #131313;
 	color: #424242;
-	font-size: small
 }
-h4.menu { 
+
+#navi .menutopic {
 	background-color: #333333;
-	font-weight: bold;
-	font-size: small;
-	color: #000000
+	color: #000000;
 }
 
-.linkbox {
-	background-color: #ffffff
+#navi li a:focus,
+#navi li a:hover,
+#navi li a:active {
+	background: #424242;  
 }
 
-.linkboxtitle {
-	font-weight: bold;
-	background-color: #000000;
-	color: #ffffff
+#content,
+#content table .content {
+	background: #131313;  
 }
 
-.question {
-	font-weight: bold;
-	font-size: 9pt
+#contenttopic,
+#content table .contenttopic,
+#shortnavi,
+#shortnavi a {
+	color: #000000;
+	background-color: #333333;
 }
 
-.engeltreffen {
-        font-weight: bold;
-        font-size: 9pt;
-	color: #ff0000;
+#content table.border {
+	background-color: #333333;
 }
 
-.answer {
-	font-size:  9pt;
-}
-.comment {
-	font-size : 6pt;
+#content .engeltreffen {
+	color: #FF0000;
 }

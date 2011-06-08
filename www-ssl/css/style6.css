@@ -13,7 +13,6 @@ a:visited {
 	text-indent: -10000px;
 }
 
-
 #navi .menu{
 	background-color: #1F203F;
 	color: #FFF3BF;
@@ -45,3 +44,6 @@ a:visited {
 	background-color: #000000;
 }
 
+#content .engeltreffen {
+	color: #FF0000;
+}
