@@ -1,86 +1,258 @@
-
-/*  */
-#topic {
-        left:0px;
-	top:0px;
-	text-align: center;
+* {
+	margin: 0;
+	padding: 0;
+	font-size: 100%;
 }
 
-/* menu settings */
-#menu {
-        position:absolute;
-        left:4px;
-	top:34px;
-	width:160px;
+body {
+	font-size: small;
+	font-family: Arial,Helvetica,sans-serif;
 }
 
-/* move liste left */
-#menu ul{
-	padding-left: 16px;
+a:link,
+a:visited {
+	text-decoration: none;
 }
 
-
-/* sub menu settings */
-#submenu {
-	text-align: left;
-	border: 1px solid #000000;
-        padding-top:4px;
-        padding-left:4px;
-        padding-right:4px;
-        padding-bottom:4px;
-        margin-top:5px;
-        margin-left:5px;
-        margin-right:5px;
-        margin-bottom:5px;
+hr {
+	margin: 15px 0px;
 }
 
-
-/*  */
-#main {
-        position:absolute;
-        left:170px;
-	top:50px;
-	right:4px;
-	bottom:4px;
+/*################################## LAYOUT #################################*/
+#heater {
+	float: left;
 }
 
-/* Properties that both side lists have in common */
-div.link-list {
-/*
-        width:10.2em;
-        position:absolute;
-        top:0px;
-        font-size:80%;
-        padding-left:1%;
-        padding-right:1%;
-        margin-left:0;
-        margin-right:0;
-*/
+.menu-left {
+	clear: both;
+	float: left;
 }
 
-/*  */
-#message {
-	text-align: center;
-	height: 25px;
+.menu-right {
+	clear: both;
+	float: right;
 }
 
+.main-left {
+	margin-left: 4px;
+	margin-right: 140px;
+}
 
+.main-right {
+	margin-left: 140px;
+	margin-right: 4px;
+}
 
-
-/*  */
 #footer {
+	clear: both;
+}
+
+
+/*################################## FORMAT #################################*/
+/* ------------------------------------- Header */
+#header {
 	text-align: center;
-/*
+}
+
+#header #logo {
+	font-size: 35px;
+	font-weight: normal;
+	height: 40px;
+}
+
+/* ------------------------------------- Navi */
+#navi {
+	width: 135px;
+	display: inline;
+}
+
+#navi .menu {
+	border: 2px #000 solid;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	margin: 2px 2px 20px 2px;
+	padding: 0px 0px 2px 0px;
+}
+
+#navi .menutopic {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-weight: bold;
 	text-align: center;
-        position: fixed;
-        position:absolute;
+	font-size: medium;
+	padding: 1px 0px;
+}
+
+#navi ul {
+	margin: 5px 0px;
+	padding-left: 20px;
+	padding-right: 3px;
+}
+
+#navi li a {
+	display: block;
+	padding-left: 3px;
+}
+
+#navi li.active a {
+	font-weight: bold;
+	font-style: oblique;
+	letter-spacing:0.1em;
+	text-decoration: underline;
+}
+
+
+/* ------------------------------------- Main */
+#main {
 	
-	width: 100%;
-        height: 100px;
-        top: auto;
-        right: 0;
-        left: 0;
-        bottom: 0;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+	border: 2px #000 solid;
+	min-width: 600px;
+	width:auto;
+	margin-top: 2px;
+	margin-bottom: 2px;
+/*	
+	overflow: visible;
+	overflow: scroll;
 */
 }
 
+#main ul {
+	padding-left: 20px;
+}
+
+#main ul li a {
+	padding-left: 5px;
+}
+
+#content {
+	padding: 6px 6px;
+}
+
+#contenttopic,
+#shortnavi {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	font-size: medium;
+	padding: 0px 6px;
+}
+
+#contenttopic {
+	font-weight: bold;
+	padding: 1px 6px;
+}
+
+#content table {
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	margin: 10px 0px;
+}
+
+#content table td,
+#content table th {
+	padding: 1px 2px;
+}
+
+#content table caption {
+	font-weight: bold;
+	font-size: normal;
+}
+
+#content table .contenttopic {
+	font-weight: bold;
+	font-size: small;
+}
+
+#content .question {
+	font-weight: bold;
+	font-size: normal;
+}
+
+#content .engeltreffen {
+	font-weight: bold;
+	font-size: normal;
+}
+
+#shortnavi {
+	text-align: center;
+}
+
+/* ------------------------------------- Footer */
+#footer {
+	padding: 0 2px;
+	text-align: center;
+}
+
+
+
+/*################################## COLOR #################################*/
+
+body {
+	background-color: #121327;
+	color: #FFFFFF;
+}
+
+a:link,
+a:visited {
+	color: #FF9900;
+} 
+
+/* ------------------------------------- Header */
+#header {
+}
+
+#header #logo {
+	background: url(himmel_w.png) center 8px no-repeat;
+	text-indent: -10000px;
+}
+
+
+/* ------------------------------------- Navi */
+#navi {
+}
+
+#navi .menu{
+	background-color: #1F203F;
+	color: #FFF3BF;
+}
+
+#navi .menutopic {
+	background-color: #5f607f;
+}
+
+#navi li a:focus,
+#navi li a:hover,
+#navi li a:active {
+	background: #636e77;  
+}
+
+
+/* ------------------------------------- Main */
+#main {
+}
+
+#content,
+#content table .content {
+	background-color: #636E77;
+}
+
+#contenttopic,
+#content table .contenttopic {
+	color: #FF9900;
+	background-color: #333e47;
+}
+
+#content table.border {
+	background-color: #000000;
+}
+
+#shortnavi {
+	color: #FF9900;
+	background-color: #333e47;
+}
+
+
+/* ------------------------------------- Footer */
+#footer {
+}

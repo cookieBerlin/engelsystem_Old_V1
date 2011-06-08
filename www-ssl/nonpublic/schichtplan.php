@@ -147,8 +147,7 @@ else
 	for( $i = 0; $i < 24; $i++ )
 		for( $j = 0; $j < $GlobalZeileProStunde; $j++)
 		{
-			$Spalten[$i * $GlobalZeileProStunde + $j] = 
-				"\t<tr class=\"content\">\n\t\t";
+			$Spalten[$i * $GlobalZeileProStunde + $j] = "\t<tr class=\"content\">\n\t\t";
 
 			//Stunde:
 			$SpaltenTemp="";	
@@ -159,10 +158,13 @@ else
 			$SpaltenTemp.= ($TempMinuten<10)? "0$TempMinuten": "$TempMinuten";
 				
 			//aktuelle stunde markieren
-			if( ($j==0) && ($i == gmdate("H", time()+$gmdateOffset)) && (gmdate("Y-m-d", time()+ $gmdateOffset) == $ausdatum) )
-				$SpaltenTemp = "<h1>$SpaltenTemp</h1>";
-				
-			$SpaltenTemp = "<td>$SpaltenTemp</td>\n";
+			if( 	($j == (round( gmdate("i", time()+$gmdateOffset) / (60/$GlobalZeileProStunde), 0)-1) ) && 
+				($i == gmdate("H", time()+$gmdateOffset)) && 
+				(gmdate("Y-m-d", time()+ $gmdateOffset) == $ausdatum) )
+			{
+				$SpaltenTemp = "<h1>*** $SpaltenTemp ***</h1>";
+			}
+			$SpaltenTemp = "<th>$SpaltenTemp</th>\n";
 			$Spalten[$i * $GlobalZeileProStunde + $j].= $SpaltenTemp;
 		}
 	

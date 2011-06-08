@@ -1,5 +1,6 @@
 <?PHP
 
+echo "<div id=\"submenu_ActiveUser\" class=\"menu\">\n";
 // Functionen gibt es nicht auf ellen rechern
 if( !function_exists("bcdiv"))
 {
@@ -18,7 +19,7 @@ if( !function_exists("bcmod"))
 }
 
 
-echo "<h4 class=\"menu\">Engel online</h4>\n";
+echo "<div class=\"menutopic\">Engel online</div>\n";
 
 $SQL = "SELECT UID, Nick, lastLogIn ".
 	"FROM User ".
@@ -34,9 +35,10 @@ $Tist =	(gmdate("d", time()) * 60 * 60 * 24) +	// Tag
 	(gmdate("s", time()) ); 		// Sekunde
 
 $Anzahl = mysql_num_rows($Erg);
+
+echo "\t<ul>\n";
 if ($Anzahl > 0)
 {
-	echo "\t<ul>\n";
 	for( $i=0; $i<$Anzahl; $i++)
 	{
 		echo "\t\t\t<li>";
@@ -59,7 +61,8 @@ if ($Anzahl > 0)
 		echo bcmod( $Tlog, 60);
 		echo "</li>\n";
 	}
-	echo "\t</ul>\n";
 }
+echo "\t</ul>\n";
+echo "</div>\n";
 
 ?>

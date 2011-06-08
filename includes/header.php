@@ -1,74 +1,59 @@
 <?PHP 
 include ("header_start.php");
 
-echo "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\" \"http://www.w3.org/TR/html4/loose.dtd\">\n";
 ?>
+<!DOCTYPE html>
 <HTML>
 <HEAD>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <?PHP
-
-echo "<TITLE>--- $title ---</TITLE>\n";
+echo "\t<TITLE>--- $title ---</TITLE>\n";
 ?>
-<meta name="keywords" content="Engel, Himmelsverwaltung">
-<meta http-equiv="content-type" content="text/html; charset=iso-8859-1">
-<meta http-equiv="Content-Style-Type" content="text/css">
-<meta http-equiv="expires" content="0">
-<meta name="robots" content="index">
-<meta name="revisit-after" content="1 days">
-<meta http-equiv="content-language" content="de">
-<script type="text/javascript" src="<?PHP echo $url. $ENGEL_ROOT; ?>/css/grossbild.js"></script>
-<link rel=stylesheet type="text/css" href="<?PHP echo $url. $ENGEL_ROOT; ?>css/layout.css">
-<link rel=stylesheet type="text/css" href="<?PHP echo $url. $ENGEL_ROOT; ?>css/style<?PHP
-	if (!IsSet($_SESSION['color'])) 
-		echo "6"; 
-	else 
-		echo $_SESSION['color'];
-	?>.css">
+	<meta name="description" content="The Angel System will be used to centrally coordinate shifts and Chaos Angels.">
+	<meta name="keywords" content="Angel System, Engel, Himmelsverwaltung">
+	<meta name="robots" content="index, nofollow">
+	
+<!--
+	<script type="text/javascript" src="<?PHP echo $url. $ENGEL_ROOT; ?>/css/tablecloth.js"></script>
+	<link rel="stylesheet" type="text/css" href="<?PHP echo $url. $ENGEL_ROOT; ?>/css/tablecloth.css" media="screen" />
+-->
+
+	<script type="text/javascript" src="<?PHP echo $url. $ENGEL_ROOT; ?>/css/grossbild.js"></script>
+	<link rel=stylesheet type="text/css" href="<?PHP echo $url. $ENGEL_ROOT; ?>css/layout.css" media="screen">
 <?PHP
+if (!IsSet($_SESSION['color'])) 
+	$_SESSION['color'] =  "6"; 
+#echo "<link rel=stylesheet type=\"text/css\" href=\"". $url. $ENGEL_ROOT. "css/style". $_SESSION['color']. ".css\">";
+
 if (isset($reload)) 
 {
 	if ($reload=="") 
 	{
 		$reload=3330;
 	}	
-	echo "\n<meta http-equiv=\"refresh\" content=\"".$reload.
+	echo "\t<meta http-equiv=\"refresh\" content=\"".$reload.
 	"; URL=./?reload=".$reload."\">\n";
 }
 
 if (isset($Page["AutoReload"])) 
 {
-	echo "\n<meta http-equiv=\"refresh\" content=\"". $Page["AutoReload"].
+	echo "\t<meta http-equiv=\"refresh\" content=\"". $Page["AutoReload"].
 		"; URL=". $url. $ENGEL_ROOT. $Page["Name"]."\">\n";
 }
 
-echo "</HEAD>\n";
+echo "</HEAD>\n\n";
 
 /////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////// B O D Y
 /////////////////////////////////////////////////////////////////////////////////////////////
 echo "<BODY>\n";
 
-echo "<div id=\"topic\">\n\n";
+echo "<div id=\"header\">\n";
+echo 	"\t<div id=\"logo\">\n".
+	"\t\t<a id=\"top\" name=\"top\">Himmelsverwaltung</a>\n".
+	"\t</div>\n";
 
-if( isset($_SESSION['color']) && ($_SESSION['color']==6) )
-{
-	echo "\t<a id=\"top\" name=\"top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel_w.png\" alt=\"Unser Himmel\"></a>\n";
-}
-else
-{
-	echo "\t<a id=\"top\" name=\"top\"><img src=\"". $url. $ENGEL_ROOT. "pic/himmel.png\" alt=\"Unser Himmel\"></a>\n";
-}
-echo "</div>\n\n";
-
-//ausgaeb Menu
-include("menu.php");
-
-
-// ---------------------------------
-// - DIV MAIN START
-// ---------------------------------
-echo "<div id=\"main\">\n";
-
+echo "\t<div id=\"message\">\n";
 //ausgabe new message
 if( isset($_SESSION['CVS']["nonpublic/messages.php"]) && ( $_SESSION['CVS']["nonpublic/messages.php"] == "Y") )
 {
@@ -76,29 +61,44 @@ if( isset($_SESSION['CVS']["nonpublic/messages.php"]) && ( $_SESSION['CVS']["non
 	$erg = mysql_query($SQL, $con);
 	if( mysql_num_rows( $erg ) > 0 )
 	{
-		echo "<div id=\"message\">\n";
-		echo 	"\t<a href=\"". $url. $ENGEL_ROOT. "nonpublic/messages.php\">". Get_Text("pub_messages_new1").
+		echo 	"\t\t<a href=\"". $url. $ENGEL_ROOT. "nonpublic/messages.php\">". Get_Text("pub_messages_new1").
 			" ".  mysql_num_rows( $erg ). " ". Get_Text("pub_messages_new2"). "</a>\n";
-		echo "</div>\n";
 	}
 }
+echo "\t</div>\n";
 
+echo "</div>\n\n";
+
+//ausgaeb Menu
+if( isset($_SESSION['Menu']) && $_SESSION['Menu'] == "R")
+{
+	$ClassMenu = "menu-right";
+	$ClassMain = "main-left";
+}
+else
+{
+	$ClassMenu = "menu-left";
+	$ClassMain = "main-right";
+}
+
+echo "<div id=\"navi\" class=\"$ClassMenu\">\n";
+include("menu.php");
+echo "</div>\n";
+
+// ---------------------------------
+// - DIV MAIN START
+// ---------------------------------
+echo "<div id=\"main\" class=\"$ClassMain\">\n";
 
 // main Table
-echo	"<table border=\"0\" width=\"100%\" align=\"center\" class=\"border\" cellpadding=\"5\" cellspacing=\"1\">\n".
-	"\t<tr class=\"contenttopic\">\n".
-	"\t\t<td>\n";
+echo	"<div id=\"contenttopic\">\n";
 if( strlen( $header) == 0 )
 	echo "\t<b>". Get_Text($Page["Name"]). "</b>\n";
 else
 	echo "\t<b>$header</b>\n";
+echo "</div>\n";
 
-echo	"\t\t</td>\n".
-	"\t</tr>\n".
-	"<tr class=\"content\">\n".
-	"\t<td>\n".
-	"<br>\n\n\n";
- 
+
 if (IsSet($_SESSION['UID'])) {
 	if( isset($_SESSION['oldurl']))
 		$BACKUP_SESSION_OLDURL = $_SESSION['oldurl'];
@@ -114,21 +114,16 @@ function SetHeaderGo2Back ()
 	$_SESSION['oldurl'] = $BACKUP_SESSION_OLDURL;
 }
 
+echo "<div id=\"content\">\n";
 
 if ( $Page["CVS"] != "Y" ) 
 {
         echo "Du besitzt kein Rechte für diesen Bereich.<br>\n";
-        If (IsSet($_SESSION['oldurl'])) 
-		echo "<a href=\"". $_SESSION["oldurl"]. "\">".Get_Text("back")."</a> geht's zur&uuml;ck...\n";
-	else
-		echo "<a href=\"". $url. $ENGEL_ROOT. "\">".Get_Text("back")."</a> geht's zur&uuml;ck...\n";
+	echo "<a href=\"". $url. $ENGEL_ROOT. "\">".Get_Text("back")."</a> geht's zur&uuml;ck...\n";
+	
+	include("footer.php");
         exit ();
 }
 
 ?>
-
-
-<!-- ende des header parts //-->
-
-
 

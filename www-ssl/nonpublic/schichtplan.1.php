@@ -3,7 +3,7 @@ include ("../../includes/funktion_schichtplan_aray.php");
 
 if( isset ($VeranstaltungsTage))
 {
-	echo "<h4>&nbsp;Tage</h4>\n";
+	echo "<div class=\"menutopic\">Tage</div>\n";
 
 	echo "\t<ul>\n";
 	foreach( $VeranstaltungsTage as $k => $Datum)

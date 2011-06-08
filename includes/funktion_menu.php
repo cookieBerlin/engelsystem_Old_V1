@@ -3,16 +3,18 @@
 
 function ShowMenu( $MenuName)
 {
-	global $MenueTableStart, $MenueTableEnd, $_SESSION, $DEBUG, $url, $ENGEL_ROOT;
+	global $_SESSION, $DEBUG, $url, $ENGEL_ROOT, $Page;
 	$Gefunden=FALSE;
 
 	//Überschift
-	$Text = "<h4 class=\"menu\">". Get_Text("$MenuName/"). "</h4>\n";
+	$Text = "<div class=\"menutopic\">". Get_Text("$MenuName/"). "</div>\n";
 	$Text .= "\t<ul>\n";
 	
 	//einträge
 	foreach( $_SESSION['CVS'] as $Key => $Entry )
+	{
 		if( strpos( $Key, ".php") > 0)
+		{
 			if( (strpos( "00$Key", "0$MenuName") > 0) ||
 			    ((strlen($MenuName)==0) && (strpos( "0$Key", "/") == 0) ) )
 			{
@@ -25,11 +27,12 @@ function ShowMenu( $MenuName)
 					//zum absichtlkichen ausblenden von einträgen
 					if( strlen($TempName)>1)
 					{
+						$active = ($Page["Name"] == $Key) ? " class=\"active\" ": "";
 						//sonderfälle:
 						if( $Key=="admin/faq.php")
 							$TempName .= " (". noAnswer(). ")";
 						//ausgabe
-						$Text .= "\t\t\t<li><a href=\"". $url. $ENGEL_ROOT. $Key. "\">$TempName</a></li>\n";
+						$Text .= "\t\t\t<li$active><a href=\"". $url. $ENGEL_ROOT. $Key. "\">$TempName</a></li>\n";
 						$Gefunden = TRUE;
 					}
 				}
@@ -39,13 +42,13 @@ function ShowMenu( $MenuName)
 					$Text .= "\t\t\t<li>$TempName ($Key)</li>\n";
 				}
 			}
+		}
+	}
 	$Text .= "\t</ul>\n";
 
 	if( $Gefunden)
 	{
-		echo "<div id=\"submenu_". $MenuName. "\" class=\"menu\">\n";
-		echo $MenueTableStart.$Text.$MenueTableEnd;
-		echo "</div>\n";
+		echo "<div id=\"submenu". $MenuName. "\" class=\"menu\">\n". $Text. "</div>\n";
 	}
 }//function ShowMenue
 

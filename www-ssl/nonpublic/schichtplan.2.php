@@ -5,7 +5,7 @@ include ("../../includes/funktion_schichtplan_aray.php");
 
 if( isset ($Room))
 {
-	echo "<h4>&nbsp;Raum&uuml;bersicht</h4>\n";
+	echo "<div class=\"menutopic\">Raum&uuml;bersicht</div>\n";
 	echo "\t<ul>\n";
 
 	$ToDate = (isset($ausdatum)==TRUE)

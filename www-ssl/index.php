@@ -9,9 +9,12 @@ echo Get_Text("index_text3")."<br>";
 
 include ("../includes/login_eingabefeld.php");
 
-echo "<h6>".Get_Text("index_text4")."</h6>";
+echo "<br/><h6>".Get_Text("index_text4")."</h6>";
 
-echo Get_Text("index_text5"). "<br>". $show_SSLCERT;
+if( isset( $show_SSLCERT) )
+{
+	echo Get_Text("index_text5"). "<br>". $show_SSLCERT;
+}
 
 include ("../includes/footer.php");
 ?>
