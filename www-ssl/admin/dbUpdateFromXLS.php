@@ -70,13 +70,21 @@ if( isset($_POST["PentabarfUser"]) && isset($_POST["password"]) && isset($_POST[
 				"\r\n";
 			fputs( $fp, $head);
 			$Zeilen = -1;
+			echo "<pre>";
 			while (!feof($fp))
 			{	
 				$Temp= fgets($fp,1024);
+	
+				// show header			
+				if ($Zeilen == -1)
+				{
+					echo $Temp;
+				}
 				
 				// ende des headers
-				if( $Temp== "f20\r\n" )
+				if( $Temp== "\r\n" )
 				{
+					echo "</pre>\n";
 					$Zeilen = 0;
 					$Temp="";
 				}
